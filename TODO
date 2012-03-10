@@ -1,0 +1,19 @@
+why are we getting duplicates in the results? this is very concerning
+multiple salts
+	[done]fed from a file (like plaintexts) OR from the hash as it it comes in
+	[done]rewrite code to not use hashdb for salted hash algos (mscache and crypt)
+[done]mscache
+[done]crypt
+[done]threaded
+	[done]even when rnpc->num_threads = 0, it = 1
+	[done]create rnpc_thread_t
+	[done]- mangle = threadsafe
+	[done]- salt = threadsafe
+	[done]- brute = threadsafe
+	try to avoid cache hits for threads
+		[done]threads local cache words from dict
+	why is non-mangled attack so much slower (because of cache hits)
+[done]passwords from stdin
+dictionary needs "linked list" mode
+"masked" passwords
+networked

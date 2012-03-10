@@ -1,0 +1,68 @@
+Rainbows-And-Pwnies-Cracker
+
+This code is from the summer of 2010. Inbetween my sophomore and junior years
+at the academy, I heard about the CrackMeIfYouCan competition at Defcon. Since
+I was already attending Defcon that year, I decided it would be a good exercise
+to code up my own cracker in C, over the course of a month, and compete with it.
+
+The code you are about to see is the result of that endeavor. At the time it
+was the largest project I had undertaken. I leave it here for historical
+purposes, as I am skeptical of how much use anyone will find from it. The
+hashing algorithms are implemented by me, though some of them are incomplete.
+
+This is actually a dump from the tar'd directory taken in the middle of the
+competition. I cleaned up a few minor things, however many of the small scripts
+I wrote during the competition remain.
+
+I wasn't used to working with memory. This code is x86-64 only. I make no
+gaurantees about its stability.
+
+Special thanks go to MAJ O'Connor for making this project possible and Matt
+Weir for taking the time to engage in some encouraging discussion with an
+undergraduate.
+
+============================================================================
+
+This code is released into the public domain.
+
+============================================================================
+
+Rainbows and Pwnies Cracker - www.rainbowsandpwnies.com
+Crack the hashes, win the con, rule the world
+
+-a Algorithm
+    <1>  MD5
+    <2>  NT
+    <3>  SHA1
+    <4>  MSCACHE
+    <5>  CRYPT
+    <6>  {SSHA}
+    <10> MD5(SALT . PLAINTEXT)
+-b DISABLED Brute Force Attack (requires -c and -l)
+-c DISABLED <charset> (for -b: ie -c 0123456789)
+-d <dictionary file> (for wordlist attack, requires -m)
+-f f stands for fuck you contest. it's for contest-output mode
+-h <hash file> (each hash on seperate line)
+-l DISABLED <length> (of strings bruteforce should create)
+-m Mangling Rulesets
+    Rules can be combined with ,
+    special_M(any) = !$@#%^&*?.+\-_=`~()| ... special_F(ew) = !@#$
+    <0> MiXeD cAsE
+    <1> 1337
+    <2> append single digit
+    <3> append single special_M
+    <4> UPPERCASE first character
+    <5> append two digits
+    <6> append year between 1921 and 2020
+    <7> UPPERCASE whole word
+    <8> Prepend digit
+    <9> Prepend UPPERCASE characters
+-n <num_threads> launches up to 8 threads to crack in parallel
+-o <filename> *APPENDS* cracked hashes to file when done instead of stdout
+-S <single ASCII salt>
+-s <salt filename> loads salts from a file
+
+Examples:
+rnpc -a 1 -m 4,2 -d words.txt -h hashes.txt
+rnpc -a 1 -b -c 0123456789 -l 4 -h hashes.txt (creates 0000-9999)
+
